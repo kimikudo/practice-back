@@ -1,0 +1,32 @@
+server:
+  # 项目端口
+  port: 50410
+  # 请求前缀
+  servlet:
+    context-path: /practice-back
+spring:
+  # 配置文件
+  profiles:
+    include: dev
+  aop:
+    proxy-target-class: true
+    auto: true
+  jackson:
+    # 为null的值不参与json格式化
+    default-property-inclusion: non_null
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# MyBatisPlus配置
+mybatis-plus:
+  configuration:
+    # 自动数据库下划线命名方式转驼峰,plus默认是true,放在这里给配置留个位置
+    map-underscore-to-camel-case: true
+# 日志配置
+logging:
+  level:
+    root: info
+    com.kay.practiceback: debug
+    org.springframework.web: trace
+  config: "classpath:logback-spring.xml"
